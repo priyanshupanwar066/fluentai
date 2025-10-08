@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --gradient-start: #1a1b26;  /* Adjusted to match navbar */
+  --gradient-end: #1e3a8a;     /* Tailwind's blue-900 */
+}
+
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --gradient-start: #111827;  /* Tailwind's gray-900 */
+    --gradient-end: #1e3a8a;     /* Tailwind's blue-900 */
+  }
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-flow {
+  background-size: 400% 400%;
+  animation: gradient-flow 15s ease infinite;
+}
+
+
+/* Keep your existing variables and add: */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom right,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  background-attachment: fixed;
+}
+
+/* Animated gradient overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    45deg,
+    var(--gradient-start),
+    var(--gradient-end),
+    var(--gradient-start)
+  );
+  background-size: 400% 400%;
+  animation: gradient-flow 20s ease infinite;
+  opacity: 0.3;
+}
+
+.animate-gradient-flow {
+  background-size: 400% 400%;
+  animation: gradient-flow 15s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Add glass effect to content areas */
+main > *:not(.no-glass) {
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
